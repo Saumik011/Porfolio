@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    @apply text-gray-800 dark:text-gray-200 bg-white dark:bg-dark-darker;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-lg transition-colors duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary-dark;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-12;
+  }
+
+  .card {
+    @apply bg-white dark:bg-dark-lighter rounded-lg shadow-soft p-6;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-dark-lighter;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 dark:bg-primary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary dark:bg-primary;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-primary/20 text-primary-dark;
+}
+
+/* Focus styles */
+:focus {
+  @apply outline-none ring-2 ring-primary/50;
+}
+
+/* Loading animation */
+.loading {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700;
+}
+
+/* Typography utilities */
+.text-gradient {
+  @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  @apply animate-fade-in;
+}
+
+.animate-slide-up {
+  @apply animate-slide-up;
+}
+
+.animate-slide-down {
+  @apply animate-slide-down;
+}
+
+.animate-slide-left {
+  @apply animate-slide-left;
+}
+
+.animate-slide-right {
+  @apply animate-slide-right;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
