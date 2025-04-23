@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import 'animate.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -26,6 +27,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <SpeedInsights />
     </motion.div>
   );
 }
