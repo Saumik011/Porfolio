@@ -1,4 +1,4 @@
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with your user ID (Public Key)
 emailjs.init(process.env.REACT_APP_EMAILJS_USER_ID || '');
