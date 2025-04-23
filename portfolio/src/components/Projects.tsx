@@ -4,41 +4,49 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const projects = [
   {
-    title: 'Project 1',
+    title: 'Job Portal',
     description: 'A full-stack web application built with React and Node.js',
-    image: '/project1.jpg',
+    image: '/job-portal.png',
     technologies: ['React', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/yourusername/project1',
-    demo: 'https://project1-demo.com',
+    github: 'https://github.com/Saumik011/Projects',
+    demo: 'https://job-portal.com',
   },
   {
-    title: 'Project 2',
-    description: 'A responsive e-commerce platform with payment integration',
-    image: '/project2.jpg',
-    technologies: ['React', 'Express', 'PostgreSQL'],
-    github: 'https://github.com/yourusername/project2',
-    demo: 'https://project2-demo.com',
+    title: 'Blog Website',
+    description: 'A responsive Blog platform with payment integration',
+    image: '/blog.png',
+    technologies: ['React', 'Express', 'MySQL'],
+    github: 'https://github.com/Saumik011/Blog',
+    demo: 'https://tourismblog.com',
   },
   {
-    title: 'Project 3',
-    description: 'A real-time chat application with WebSocket integration',
-    image: '/project3.jpg',
-    technologies: ['React', 'Socket.io', 'Redis'],
-    github: 'https://github.com/yourusername/project3',
-    demo: 'https://project3-demo.com',
+    title: 'Content Management Tool',
+    description: 'A Content Management Tool with HTML, CSS, and Javascript',
+    image: '/contentManagment.png',
+    technologies: ['Javascript', 'HTML', 'CSS'],
+    github: 'https://github.com/Saumik011/Bharat-intern/tree/main/Content%20management%20tool',
+    demo: 'https://contentManagementTool.com'
+  },
+  {
+    title: 'Project Management Tool',
+    description: 'A Project Management Tool with WebSocket integration',
+    image: '/projectManagement.png',
+    technologies: ['Javascript', 'HTML', 'CSS'],
+    github: 'https://github.com/Saumik011/Bharat-intern/tree/main/Project%20management%20tool',
+    demo: 'https://projectManagementTool.com'
   },
 ];
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-dark-darker">
+    <section id="projects" className="py-20 bg-gray-800">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-12"
+          className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
         >
           Featured Projects
         </motion.h2>
@@ -51,27 +59,28 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-dark-lighter rounded-lg overflow-hidden shadow-lg"
+              className="bg-gray-900 rounded-lg overflow-hidden shadow-lg group transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
             >
-              <div className="relative h-48">
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4 group-hover:text-white transition-colors">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-primary/10 text-primary dark:text-primary-light rounded-full text-sm"
+                      className="px-3 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-sm transition-all duration-300 hover:bg-yellow-400/20 hover:scale-105"
                     >
                       {tech}
                     </span>
@@ -82,7 +91,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-yellow-400 transition-all transform hover:scale-110"
                   >
                     <FaGithub className="w-6 h-6" />
                   </a>
@@ -90,7 +99,7 @@ const Projects = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors"
+                    className="text-gray-300 hover:text-yellow-400 transition-all transform hover:scale-110"
                   >
                     <FaExternalLinkAlt className="w-6 h-6" />
                   </a>

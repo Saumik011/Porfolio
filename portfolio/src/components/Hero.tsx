@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 
 const roles = [
   "UI/UX Designer",
   "Frontend Developer",
   "Full Stack Developer",
-  "Software Developer",
-  "Creative Developer"
+  "Software Developer"
 ];
 
 const Hero = () => {
@@ -16,15 +15,7 @@ const Hero = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(50 - Math.random() * 30);
 
-  useEffect(() => {
-    let ticker = setInterval(() => {
-      tick();
-    }, delta);
-
-    return () => clearInterval(ticker);
-  }, [text, delta]);
-
-  const tick = () => {
+  const tick = useCallback(() => {
     const currentRole = roles[currentRoleIndex];
     const updatedText = isDeleting
       ? currentRole.substring(0, text.length - 1)
@@ -40,94 +31,119 @@ const Hero = () => {
       setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
       setDelta(1);
     }
-  };
+  }, [currentRoleIndex, isDeleting, text.length]);
+
+  useEffect(() => {
+    let ticker = setInterval(tick, delta);
+    return () => clearInterval(ticker);
+  }, [tick, delta]);
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex items-center justify-center">
-      {/* Background Image with Overlay */}
-      <div 
-        className="fixed top-0 left-0 w-full h-full"
-        style={{
-          background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('/hero-bg.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
-          zIndex: -1
-        }}
-      />
+    <section 
+      id="home" 
+      className="w-full min-h-screen bg-gradient-to-r from-gray-900 to-gray-800 text-white"
+    >
+      <div className="w-full h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center h-screen">
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full h-full flex items-center px-2 group"
+          >
+            <div className="relative w-full overflow-hidden rounded-2xl transition-transform duration-300 group-hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 group-hover:from-primary/30 group-hover:to-secondary/30 transition-colors duration-300"></div>
+              <img
+                src="/profile.jpg"
+                alt="Saumik Keshari"
+                className="w-full h-auto rounded-2xl shadow-2xl object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Saumik Keshari
-          </h1>
-          <div className="flex items-center justify-center space-x-4 text-gray-300 mb-6">
-            <div className="flex items-center">
-              <FaMapMarkerAlt className="mr-2" />
-              <span>India</span>
-            </div>
-            <span>•</span>
-            <div className="flex items-center">
-              <FaCalendarAlt className="mr-2" />
-              <span>3+ years experience</span>
-            </div>
+          {/* Content */}
+          <div className="w-full flex flex-col justify-center -ml-4 lg:-ml-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6"
+            >
+              <h1 className="text-4xl lg:text-6xl font-bold mb-4 whitespace-nowrap group">
+                <span className="text-gray-300 hover:text-white transition-colors">I </span>
+                <span className="text-gray-300 hover:text-white transition-colors">am </span>
+                <motion.span 
+                  className="inline-block bg-gradient-to-r from-white via-yellow-400 to-white bg-clip-text text-transparent bg-[length:200%_100%] hover:via-yellow-300 transition-colors"
+                  animate={{
+                    backgroundPosition: ["0% 0%", "100% 0%", "0% 0%"],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  Saumik Keshari
+                </motion.span>
+              </h1>
+              <div className="flex flex-col items-center space-y-4 text-gray-300 text-lg mb-4 ml-[4.5rem]">
+                <div className="flex items-center space-x-8">
+                  <div className="flex items-center group hover:text-yellow-400 transition-colors">
+                    <FaMapMarkerAlt className="mr-2 text-xl group-hover:scale-110 transition-transform" />
+                    <span className="group-hover:text-white transition-colors">Bangalore, India</span>
+                  </div>
+                  <div className="flex items-center group hover:text-yellow-400 transition-colors">
+                    <FaCalendarAlt className="mr-2 text-xl group-hover:scale-110 transition-transform" />
+                    <span className="group-hover:text-white transition-colors">2+ years experience</span>
+                  </div>
+                </div>
+                <div className="flex space-x-6 justify-center">
+                  <a
+                    href="https://github.com/yourusername"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-yellow-400 transition-all transform hover:scale-110"
+                  >
+                    <FaGithub className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/yourusername"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-yellow-400 transition-all transform hover:scale-110"
+                  >
+                    <FaLinkedin className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://twitter.com/yourusername"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-yellow-400 transition-all transform hover:scale-110"
+                  >
+                    <FaTwitter className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-2xl lg:text-3xl text-white mb-16 text-center group"
+            >
+              <span className="inline-block min-h-[2em] group-hover:text-yellow-400 transition-colors">
+                {text}
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity }}
+                  className="inline-block w-[3px] h-[1em] bg-yellow-400 ml-2 group-hover:bg-white"
+                />
+              </span>
+            </motion.p>
           </div>
-        </motion.div>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-2xl md:text-3xl text-gray-200 mb-12"
-        >
-          <span className="inline-block min-h-[2em]">
-            {text}
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.5, repeat: Infinity }}
-              className="inline-block w-[2px] h-[1em] bg-yellow-400 ml-1"
-            />
-          </span>
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex justify-center space-x-6"
-        >
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-yellow-400 transition-colors"
-          >
-            <FaGithub className="w-8 h-8" />
-          </a>
-          <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-yellow-400 transition-colors"
-          >
-            <FaLinkedin className="w-8 h-8" />
-          </a>
-          <a
-            href="https://twitter.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-yellow-400 transition-colors"
-          >
-            <FaTwitter className="w-8 h-8" />
-          </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

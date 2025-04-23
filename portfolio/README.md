@@ -1,36 +1,42 @@
 # Saumik Keshari - Portfolio
 
-A modern, responsive portfolio website showcasing my work as a Full Stack Developer, UI/UX Designer, and Software Developer. Built with React, TypeScript, and Tailwind CSS.
-
-![Portfolio Preview](public/og-image.svg)
+A modern, responsive portfolio website showcasing my work as a Full Stack Developer. Built with React, TypeScript, and Tailwind CSS.
 
 ## 🌟 Features
 
-- **Modern Design**: Clean and professional UI with smooth animations
+- **Modern Design**: Clean and professional UI with smooth animations and dark theme
 - **Responsive**: Fully responsive design that works on all devices
-- **Dynamic Content**: Animated typing effect for role display
-- **Dark Mode**: Built-in dark mode support
+- **Interactive UI**: 
+  - Animated typing effect for role display
+  - Hover effects on all interactive elements
+  - Smooth scrolling navigation
+  - Contact form with email integration
+- **Sections**:
+  - Hero section with dynamic role animation
+  - Skills & Expertise with external documentation links
+  - Project showcase with live demos and GitHub links
+  - Work experience timeline
+  - Contact form with EmailJS integration
 - **Performance Optimized**: Fast loading and smooth transitions
-- **SEO Friendly**: Proper meta tags and semantic HTML
 - **Accessibility**: WCAG 2.1 compliant
-- **Cross-browser**: Works on all modern browsers
+- **Cross-browser Compatible**: Works on all modern browsers
 
 ## 🛠️ Technologies Used
 
-- **Frontend Framework**: React.js
-- **Language**: TypeScript
+- **Frontend Framework**: React.js with TypeScript
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
-- **Icons**: React Icons, Heroicons
-- **UI Components**: Headless UI
+- **Icons**: React Icons
+- **Email Integration**: EmailJS
 - **Build Tool**: Create React App
-- **Package Manager**: npm
+- **Version Control**: Git
+- **Deployment**: [Your deployment platform]
 
 ## 📦 Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/Saumik011/portfolio.git
 ```
 
 2. Navigate to the project directory:
@@ -43,26 +49,44 @@ cd portfolio
 npm install
 ```
 
-4. Start the development server:
+4. Set up EmailJS:
+   - Create an account at [EmailJS](https://www.emailjs.com/)
+   - Create an email service
+   - Create an email template
+   - Update the credentials in `src/config/emailjs.ts`
+
+5. Start the development server:
 ```bash
 npm start
 ```
 
-The application will be available at `http://localhost:3000`.
+The application will be available at `http://localhost:3000`
 
-## 🏗️ Project Structure
+## 🔧 Configuration
+
+### Email Setup
+Update `src/config/emailjs.ts` with your EmailJS credentials:
+```typescript
+emailjs.init('YOUR_PUBLIC_KEY');
+
+export const emailConfig = {
+  serviceId: 'YOUR_SERVICE_ID',
+  templateId: 'YOUR_TEMPLATE_ID',
+  userId: 'YOUR_PUBLIC_KEY'
+};
+```
+
+### Resume
+Place your resume PDF in the `public` folder as `resume.pdf`
+
+## 📁 Project Structure
 
 ```
 portfolio/
 ├── public/
-│   ├── favicon.svg
-│   ├── logo.svg
-│   ├── og-image.svg
-│   ├── hero-bg.jpg
-│   ├── index.html
-│   ├── manifest.json
-│   ├── robots.txt
-│   └── sitemap.xml
+│   ├── resume.pdf
+│   ├── profile.jpg
+│   └── project-images/
 ├── src/
 │   ├── components/
 │   │   ├── Hero.tsx
@@ -72,59 +96,34 @@ portfolio/
 │   │   ├── Experience.tsx
 │   │   ├── Contact.tsx
 │   │   └── Footer.tsx
+│   ├── config/
+│   │   └── emailjs.ts
 │   ├── App.tsx
-│   ├── index.tsx
-│   └── index.css
-├── package.json
-├── tsconfig.json
-├── tailwind.config.js
-├── postcss.config.js
-└── .prettierrc
+│   └── index.tsx
+└── package.json
 ```
 
 ## 🎨 Customization
 
-### Changing Colors
-Edit the `tailwind.config.js` file to modify the color scheme:
-
-```javascript
-theme: {
-  extend: {
-    colors: {
-      primary: {
-        DEFAULT: '#3B82F6',
-        dark: '#1E40AF',
-        light: '#60A5FA',
-      },
-      secondary: {
-        DEFAULT: '#10B981',
-        dark: '#065F46',
-        light: '#34D399',
-      },
-      // Add your custom colors here
-    },
-  },
-}
-```
-
 ### Updating Content
-- Edit the `Hero.tsx` component to update your name and roles
-- Modify the `Projects.tsx` component to showcase your work
-- Update the `Skills.tsx` component with your expertise
-- Edit the `Experience.tsx` component with your work history
+- Edit components in `src/components/` to update content
+- Update images in `public/`
+- Modify email template in EmailJS dashboard
+- Update social media links in components
 
-### Adding New Sections
-1. Create a new component in the `src/components` directory
-2. Import and add the component to `App.tsx`
-3. Style the component using Tailwind CSS classes
+### Styling
+- Tailwind classes for component styling
+- Framer Motion for animations
+- Custom transitions and hover effects
 
 ## 📱 Responsive Design
 
-The portfolio is fully responsive and optimized for:
-- Mobile devices (320px and up)
-- Tablets (768px and up)
-- Laptops (1024px and up)
-- Desktop screens (1280px and up)
+- Mobile-first approach
+- Breakpoints:
+  - Mobile: 320px and up
+  - Tablet: 768px and up
+  - Desktop: 1024px and up
+  - Large Desktop: 1280px and up
 
 ## 🚀 Deployment
 
@@ -133,12 +132,18 @@ The portfolio is fully responsive and optimized for:
 npm run build
 ```
 
-2. Deploy the `build` folder to your preferred hosting service:
-- [Vercel](https://vercel.com)
-- [Netlify](https://netlify.com)
-- [GitHub Pages](https://pages.github.com)
-- [AWS](https://aws.amazon.com)
-- [Firebase Hosting](https://firebase.google.com)
+2. Deploy the `build` folder to your preferred hosting service
+
+## 👤 Contact
+
+- GitHub: [Saumik011](https://github.com/Saumik011)
+- LinkedIn: [Saumik Keshari](https://www.linkedin.com/in/saumik-keshari/)
+- Twitter: [@Saumik_Keshari](https://x.com/Saumik_Keshari)
+- Email: saumikkeshari@gmail.com
+
+## 📄 License
+
+This project is licensed under the MIT License.
 
 ## 🧪 Testing
 

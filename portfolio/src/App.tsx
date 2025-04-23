@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import 'animate.css';
 import Navbar from './components/Navbar';
@@ -11,24 +10,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
   return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`min-h-screen transition-all duration-700 ease-in-out ${darkMode ? 'dark bg-dark-darker' : 'bg-gray-50'}`}
+      className="min-h-screen bg-dark-darker"
     >
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
       <main className="container mx-auto px-4 py-8">
         <Hero />
         <Skills />

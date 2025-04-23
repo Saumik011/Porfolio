@@ -9,11 +9,19 @@
   }
 
   body {
-    @apply text-gray-800 dark:text-gray-200 bg-white dark:bg-dark-darker;
+    @apply text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-darker;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    @apply font-bold text-gray-900 dark:text-white;
+  }
+
+  p {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+
+  a {
+    @apply text-primary dark:text-primary-light hover:text-primary-dark dark:hover:text-primary;
   }
 }
 
@@ -39,7 +47,7 @@
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-center mb-12;
+    @apply text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white;
   }
 
   .card {
@@ -88,25 +96,51 @@
   text-wrap: balance;
 }
 
-/* Animation utilities */
-.animate-fade-in {
-  @apply animate-fade-in;
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.animate-slide-up {
-  @apply animate-slide-up;
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
 }
 
-.animate-slide-down {
-  @apply animate-slide-down;
+.slide-down {
+  animation: slideDown 0.5s ease-in-out;
 }
 
-.animate-slide-left {
-  @apply animate-slide-left;
+.slide-left {
+  animation: slideLeft 0.5s ease-in-out;
 }
 
-.animate-slide-right {
-  @apply animate-slide-right;
+.slide-right {
+  animation: slideRight 0.5s ease-in-out;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 html, body {
