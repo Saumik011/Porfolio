@@ -41,18 +41,18 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="w-full min-h-screen bg-gradient-to-r from-gray-900 to-gray-800 text-white"
+      className="w-full min-h-screen bg-gradient-to-r from-gray-900 to-gray-800 text-white py-8 md:py-0"
     >
-      <div className="w-full h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center h-screen">
+      <div className="w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[calc(100vh-4rem)]">
           {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-full h-full flex items-center px-2 group"
+            className="w-full flex items-center justify-center px-4 sm:px-6 lg:px-8 order-2 lg:order-1"
           >
-            <div className="relative w-full overflow-hidden rounded-2xl transition-transform duration-300 group-hover:scale-[1.02]">
+            <div className="relative w-full max-w-md overflow-hidden rounded-2xl transition-transform duration-300 group-hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 group-hover:from-primary/30 group-hover:to-secondary/30 transition-colors duration-300"></div>
               <img
                 src="/profile.jpg"
@@ -63,14 +63,14 @@ const Hero = () => {
           </motion.div>
 
           {/* Content */}
-          <div className="w-full flex flex-col justify-center -ml-4 lg:-ml-20">
+          <div className="w-full flex flex-col justify-center order-1 lg:order-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-6"
+              className="mb-6 text-center lg:text-left"
             >
-              <h1 className="text-4xl lg:text-6xl font-bold mb-4 whitespace-nowrap group">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 group">
                 <span className="text-gray-300 hover:text-white transition-colors">I </span>
                 <span className="text-gray-300 hover:text-white transition-colors">am </span>
                 <motion.span 
@@ -87,25 +87,25 @@ const Hero = () => {
                   Saumik Keshari
                 </motion.span>
               </h1>
-              <div className="flex flex-col items-center space-y-4 text-gray-300 text-lg mb-4 ml-[4.5rem]">
-                <div className="flex items-center space-x-8">
+              <div className="flex flex-col space-y-4 text-gray-300 text-base sm:text-lg mb-6">
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-6">
                   <div className="flex items-center group hover:text-yellow-400 transition-colors">
-                    <FaMapMarkerAlt className="mr-2 text-xl group-hover:scale-110 transition-transform" />
+                    <FaMapMarkerAlt className="mr-2 text-lg sm:text-xl group-hover:scale-110 transition-transform" />
                     <span className="group-hover:text-white transition-colors">Bangalore, India</span>
                   </div>
                   <div className="flex items-center group hover:text-yellow-400 transition-colors">
-                    <FaCalendarAlt className="mr-2 text-xl group-hover:scale-110 transition-transform" />
+                    <FaCalendarAlt className="mr-2 text-lg sm:text-xl group-hover:scale-110 transition-transform" />
                     <span className="group-hover:text-white transition-colors">2+ years experience</span>
                   </div>
                 </div>
-                <div className="flex space-x-6 justify-center">
+                <div className="flex space-x-4 justify-center lg:justify-start">
                   <a
                     href="https://github.com/yourusername"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-yellow-400 transition-all transform hover:scale-110"
                   >
-                    <FaGithub className="w-6 h-6" />
+                    <FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />
                   </a>
                   <a
                     href="https://linkedin.com/in/yourusername"
@@ -113,7 +113,7 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     className="text-white hover:text-yellow-400 transition-all transform hover:scale-110"
                   >
-                    <FaLinkedin className="w-6 h-6" />
+                    <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
                   </a>
                   <a
                     href="https://twitter.com/yourusername"
@@ -121,7 +121,7 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     className="text-white hover:text-yellow-400 transition-all transform hover:scale-110"
                   >
-                    <FaTwitter className="w-6 h-6" />
+                    <FaTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
                   </a>
                 </div>
               </div>
@@ -131,7 +131,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-2xl lg:text-3xl text-white mb-16 text-center group"
+              className="text-xl sm:text-2xl lg:text-3xl text-white mb-8 text-center lg:text-left group"
             >
               <span className="inline-block min-h-[2em] group-hover:text-yellow-400 transition-colors">
                 {text}
